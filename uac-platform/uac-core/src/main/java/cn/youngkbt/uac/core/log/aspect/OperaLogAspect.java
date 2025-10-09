@@ -26,10 +26,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Objects;
-import java.util.StringJoiner;
+import java.util.*;
 
 /**
  * @author Kele-Bingtang
@@ -101,7 +98,7 @@ public class OperaLogAspect {
 
             if (e != null) {
                 operaLogEvent.setStatus(BusinessStatus.FAIL.ordinal());
-                operaLogEvent.setErrorMsg(StringUtils.substring(e.getMessage(), 0, 2000));
+                operaLogEvent.setErrorMsg(StringUtils.substring(e.getMessage(), 0, 3800));
             }
 
             // 设置方法名称
@@ -162,7 +159,7 @@ public class OperaLogAspect {
         String requestMethod = operaLogEvent.getRequestMethod();
 
         // 如果参数 Map 为空，并且请求方法为 PUT 或 POST
-        if (paramsMap.isEmpty() && HttpMethod.PUT.name().equals(requestMethod) || HttpMethod.POST.name().equals(requestMethod)) {
+        if (MapUtil.isEmpty(paramsMap) && StringUtils.equalsAny(requestMethod, HttpMethod.PUT.name(), HttpMethod.POST.name(), HttpMethod.DELETE.name())) {
             // 将方法参数转换为字符串，限制长度为 2000 字符，并设置到操作日志事件的参数中
             String params = argsArrayToString(joinPoint.getArgs(), excludeParamNames);
             operaLogEvent.setOperaParam(StringUtils.substring(params, 0, 2000));
@@ -185,15 +182,30 @@ public class OperaLogAspect {
         if (ArrayUtil.isEmpty(paramsArray)) {
             return params.toString();
         }
+        String[] exclude = ArrayUtil.addAll(excludeParamNames, EXCLUDE_PROPERTIES);
         for (Object o : paramsArray) {
             if (Objects.nonNull(o) && !isFilterObject(o)) {
-                // POST、PUT 请求的 paramsArray 是实体类，因此可以将其转为 Map，然后过滤后转为 String
-                String str = JacksonUtil.toJsonStr(o);
-                Map<String, Object> map = JacksonUtil.toJson(str, Map.class);
-                if (MapUtil.isNotEmpty(map)) {
-                    MapUtil.removeAny(map, EXCLUDE_PROPERTIES);
-                    MapUtil.removeAny(map, excludeParamNames);
-                    str = JacksonUtil.toJsonStr(map);
+                String str = "";
+                if (o instanceof List<?> list) {
+                    List<Map<String, Object>> list1 = new ArrayList<>();
+                    for (Object obj : list) {
+                        String str1 = JacksonUtil.toJsonStr(obj);
+                        Map<String, Object> map = JacksonUtil.toJson(str1, Map.class);
+                        if (MapUtil.isNotEmpty(map)) {
+                            MapUtil.removeAny(map, exclude);
+                            list1.add(map);
+                        }
+                    }
+                    str = JacksonUtil.toJsonStr(list1);
+                } else {
+                    // POST、PUT 请求的 paramsArray 是实体类，因此可以将其转为 Map，然后过滤后转为 String
+                    str = JacksonUtil.toJsonStr(o);
+                    Map<String, Object> map = JacksonUtil.toJson(str, Map.class);
+                    if (MapUtil.isNotEmpty(map)) {
+                        MapUtil.removeAny(map, EXCLUDE_PROPERTIES);
+                        MapUtil.removeAny(map, excludeParamNames);
+                        str = JacksonUtil.toJsonStr(map);
+                    }
                 }
                 params.add(str);
             }

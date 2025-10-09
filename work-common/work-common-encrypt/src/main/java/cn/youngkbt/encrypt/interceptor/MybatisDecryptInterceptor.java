@@ -2,6 +2,7 @@ package cn.youngkbt.encrypt.interceptor;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.convert.Convert;
+import cn.hutool.core.util.ObjectUtil;
 import cn.youngkbt.encrypt.annotation.EncryptField;
 import cn.youngkbt.encrypt.core.EncryptContext;
 import cn.youngkbt.encrypt.core.EncryptorManager;
@@ -11,6 +12,7 @@ import cn.youngkbt.encrypt.properties.EncryptorProperties;
 import cn.youngkbt.utils.StringUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;
 import org.apache.ibatis.plugin.*;
 
@@ -37,6 +39,17 @@ public class MybatisDecryptInterceptor implements Interceptor {
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
+        // 开始进行参数解密
+        ResultSetHandler resultSetHandler = (ResultSetHandler) invocation.getTarget();
+        Field parameterHandlerField = resultSetHandler.getClass().getDeclaredField("parameterHandler");
+        parameterHandlerField.setAccessible(true);
+        Object target = parameterHandlerField.get(resultSetHandler);
+        if (target instanceof ParameterHandler parameterHandler) {
+            Object parameterObject = parameterHandler.getParameterObject();
+            if (ObjectUtil.isNotNull(parameterObject) && !(parameterObject instanceof String)) {
+                this.decryptHandler(parameterObject);
+            }
+        }
         // 执行 sql 获取结果
         Object result = invocation.proceed();
         if (result == null) {

@@ -114,7 +114,7 @@ public class WebSocketHelper {
      * @param session WebSocket 会话
      * @param message 要发送的 WebSocket 消息对象
      */
-    private static void sendMessage(WebSocketSession session, WebSocketMessage<?> message) {
+    private synchronized static void sendMessage(WebSocketSession session, WebSocketMessage<?> message) {
         if (Objects.isNull(session) || !session.isOpen()) {
             log.warn("[send] session 会话已经关闭");
         } else {

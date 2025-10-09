@@ -2,8 +2,10 @@ package cn.youngkbt.websocket.core;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketSession;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -15,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class WebSocketSessionManager {
-    
+
     private static final Map<String, WebSocketSession> USER_SESSION_MAP = new ConcurrentHashMap<>();
 
     /**
@@ -53,8 +55,13 @@ public class WebSocketSessionManager {
      * @param sessionKey 要移除的会话键
      */
     public static void removeSession(String sessionKey) {
-        if (existSession(sessionKey)) {
-            USER_SESSION_MAP.remove(sessionKey);
+        if (!existSession(sessionKey)) {
+            return;
+        }
+        WebSocketSession session = USER_SESSION_MAP.remove(sessionKey);
+        try {
+            session.close(CloseStatus.BAD_DATA);
+        } catch (IOException ignored) {
         }
     }
 

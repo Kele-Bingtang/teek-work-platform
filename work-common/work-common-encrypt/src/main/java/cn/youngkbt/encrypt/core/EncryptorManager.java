@@ -42,6 +42,8 @@ public class EncryptorManager {
      */
     Map<Class<?>, Set<Field>> fieldCache = new ConcurrentHashMap<>();
 
+    private final String ENCRYPT_HEADER = "ENC_";
+
     /**
      * 构造方法传入类加密字段缓存
      *
@@ -92,8 +94,12 @@ public class EncryptorManager {
      * @param encryptContext 加密相关的配置信息
      */
     public String encrypt(String value, EncryptContext encryptContext) {
+        if (value.startsWith(ENCRYPT_HEADER)) {
+            return value;
+        }
         Encryptor encryptor = this.registAndGetEncryptor(encryptContext);
-        return encryptor.encrypt(value, encryptContext.getEncode());
+        String encrypt = encryptor.encrypt(value, encryptContext.getEncode());
+        return ENCRYPT_HEADER + encrypt;
     }
 
     /**
@@ -103,8 +109,12 @@ public class EncryptorManager {
      * @param encryptContext 加密相关的配置信息
      */
     public String decrypt(String value, EncryptContext encryptContext) {
+        if (!value.startsWith(ENCRYPT_HEADER)) {
+            return value;
+        }
         Encryptor encryptor = this.registAndGetEncryptor(encryptContext);
-        return encryptor.decrypt(value);
+        String str = StringUtils.removeStart(value, ENCRYPT_HEADER);
+        return encryptor.decrypt(str);
     }
 
     /**

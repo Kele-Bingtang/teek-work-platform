@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.SysDictTypeMapper">
+<mapper namespace="top.teek.uac.system.mapper.SysDictTypeMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.SysDictType">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.SysDictType">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="dictCode" column="dict_code" jdbcType="VARCHAR"/>
             <result property="dictName" column="dict_name" jdbcType="VARCHAR"/>

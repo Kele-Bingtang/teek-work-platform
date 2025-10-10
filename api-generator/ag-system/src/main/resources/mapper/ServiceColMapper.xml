@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.ag.system.mapper.ServiceColMapper">
+<mapper namespace="top.teek.ag.system.mapper.ServiceColMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.ag.system.model.po.ServiceCol">
+    <resultMap id="BaseResultMap" type="top.teek.ag.system.model.po.ServiceCol">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="colId" column="col_id" jdbcType="VARCHAR"/>
             <result property="tableCol" column="table_col" jdbcType="VARCHAR"/>

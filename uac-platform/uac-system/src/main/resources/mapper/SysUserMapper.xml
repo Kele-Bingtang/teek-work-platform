@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.SysUserMapper">
+<mapper namespace="top.teek.uac.system.mapper.SysUserMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.SysUser">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.SysUser">
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="userId" column="user_id" jdbcType="VARCHAR"/>
         <result property="username" column="user_name" jdbcType="VARCHAR"/>
@@ -31,13 +31,13 @@
         <result property="deptId" column="dept_id" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <resultMap id="BaseResultMapVo" type="cn.youngkbt.uac.system.model.vo.SysUserVO">
+    <resultMap id="BaseResultMapVo" type="top.teek.uac.system.model.vo.SysUserVO">
         <id property="id" column="id"/>
         <result property="deptId" column="dept_id"/>
         <association property="dept" resultMap="deptResult" />
     </resultMap>
 
-    <resultMap id="deptResult" type="cn.youngkbt.uac.system.model.vo.SysDeptVO">
+    <resultMap id="deptResult" type="top.teek.uac.system.model.vo.SysDeptVO">
         <id property="deptId" column="dept_id"/>
         <result property="email" column="dept_email"/>
         <result property="status" column="dept_status"/>
@@ -55,11 +55,11 @@
         is_deleted,tenant_id,dept_id
     </sql>
     
-    <select id="selectTenantUserByUsername" resultType="cn.youngkbt.security.domain.SecurityUser"></select>
+    <select id="selectTenantUserByUsername" resultType="top.teek.security.domain.SecurityUser"></select>
     
-    <select id="selectUserByUsername" resultType="cn.youngkbt.security.domain.SecurityUser"></select>
+    <select id="selectUserByUsername" resultType="top.teek.security.domain.SecurityUser"></select>
 
-    <select id="queryList" resultType="cn.youngkbt.uac.system.model.vo.SysUserVO">
+    <select id="queryList" resultType="top.teek.uac.system.model.vo.SysUserVO">
         select su.id, su.user_id, su.username, su.nickname, su.email, su.sex, su.birthday, su.phone, su.avatar, su.register_time,
             su.login_ip, su.login_time, su.user_status, su.status, su.dept_id,
             sd.dept_name, sd.leader, su1.user_id as leader_name

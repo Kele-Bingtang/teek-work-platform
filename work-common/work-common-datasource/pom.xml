@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>cn.youngkbt</groupId>
+        <groupId>top.teek</groupId>
         <artifactId>work-common</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -22,7 +22,7 @@
     
     <dependencies>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-web</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -32,7 +32,7 @@
             <version>${dynamic-ds.version}</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-util</artifactId>
             <version>1.0.0</version>
         </dependency>

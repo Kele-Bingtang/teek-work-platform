@@ -155,7 +155,7 @@
 
     <!-- 开发环境 -->
     <springProfile name="dev">
-        <logger name="cn.youngkbt" level="debug"/>
+        <logger name="top.teek" level="debug"/>
         <logger name="org.springframework.web" level="warn"/>
         <root level="info">
             <appender-ref ref="console" />
@@ -168,7 +168,7 @@
 
     <!-- 生产环境 -->
     <springProfile name="prod">
-        <logger name="cn.youngkbt" level="debug"/>
+        <logger name="top.teek" level="debug"/>
         <logger name="org.springframework.web" level="warn"/>
         <root level="info">
             <appender-ref ref="console" />

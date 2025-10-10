@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.ag.system.mapper.DataSourceMapper">
+<mapper namespace="top.teek.ag.system.mapper.DataSourceMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.ag.system.model.po.DataSource">
+    <resultMap id="BaseResultMap" type="top.teek.ag.system.model.po.DataSource">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="dataSourceId" column="data_source_id" jdbcType="VARCHAR"/>
             <result property="dataSourceName" column="data_source_name" jdbcType="VARCHAR"/>
@@ -36,7 +36,7 @@
         is_deleted
     </sql>
     
-    <select id="listByProjectId" resultType="cn.youngkbt.ag.system.model.po.DataSource">
+    <select id="listByProjectId" resultType="top.teek.ag.system.model.po.DataSource">
         select
         <include refid="Base_Column_List"/>
         from t_data_source tds

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.UserRoleLinkMapper">
+<mapper namespace="top.teek.uac.system.mapper.UserRoleLinkMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.UserRoleLink">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.UserRoleLink">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="VARCHAR"/>
             <result property="roleId" column="role_id" jdbcType="VARCHAR"/>
@@ -26,28 +26,28 @@
         status,is_deleted,app_id
     </sql>
     
-    <select id="listUserLinkByRoleId" resultType="cn.youngkbt.uac.system.model.vo.link.UserLinkVO">
+    <select id="listUserLinkByRoleId" resultType="top.teek.uac.system.model.vo.link.UserLinkVO">
         select tsu.username, tsu.nickname, turl.id as link_id, turl.valid_from, turl.expire_on, turl.create_time, turl.app_id
         from t_sys_user tsu
         join t_user_role_link turl on tsu.user_id = turl.user_id and turl.is_deleted = 0
         ${ew.getCustomSqlSegment}
     </select>
 
-    <select id="listRoleLinkByUserId" resultType="cn.youngkbt.uac.system.model.vo.link.RoleLinkVO">
+    <select id="listRoleLinkByUserId" resultType="top.teek.uac.system.model.vo.link.RoleLinkVO">
         select tsr.role_id, tsr.role_code, tsr.role_name, turl.id as link_id, turl.valid_from, turl.expire_on, turl.create_time, turl.app_id
         from t_sys_role tsr
         join t_user_role_link turl on tsr.role_id = turl.role_id and turl.is_deleted = 0
         ${ew.getCustomSqlSegment}
     </select>
 
-    <select id="selectWithDisabledByUserId" resultType="cn.youngkbt.uac.system.model.vo.link.RoleBindSelectVO">
+    <select id="selectWithDisabledByUserId" resultType="top.teek.uac.system.model.vo.link.RoleBindSelectVO">
         select tsr.role_id, tsr.role_code, tsr.role_name, case when turl.user_id is not null then 1 else 0 end as disabled
         from t_sys_role tsr
         left join t_user_role_link turl on tsr.role_id = turl.role_id and turl.user_id = #{userId} and turl.is_deleted = 0
         where tsr.app_id = #{appId} and tsr.is_deleted = 0
     </select>
     
-    <select id="listWithDisabledByRoleId" resultType="cn.youngkbt.uac.system.model.vo.link.UserBindSelectVO">
+    <select id="listWithDisabledByRoleId" resultType="top.teek.uac.system.model.vo.link.UserBindSelectVO">
         select tsu.user_id, tsu.username, tsu.nickname, case when turl.role_id is not null then 1 else 0 end as disabled
         from t_sys_user tsu
         left join t_user_role_link turl on tsu.user_id = turl.user_id and turl.role_id = #{roleId} and turl.is_deleted = 0

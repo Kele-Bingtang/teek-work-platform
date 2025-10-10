@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.SysDictDataMapper">
+<mapper namespace="top.teek.uac.system.mapper.SysDictDataMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.SysDictData">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.SysDictData">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="dictLabel" column="dict_label" jdbcType="VARCHAR"/>
             <result property="dictValue" column="dict_value" jdbcType="VARCHAR"/>
@@ -33,7 +33,7 @@
         app_id,dict_code
     </sql>
     
-    <select id="checkExitDictData" resultType="cn.youngkbt.uac.system.model.po.SysDictType">
+    <select id="checkExitDictData" resultType="top.teek.uac.system.model.po.SysDictType">
         select tsdt.id, tsdt.dict_name
         from t_sys_dict_type tsdt
         join t_sys_dict_data tsdd on tsdt.dict_code = tsdd.dict_code and tsdd.is_deleted = 0

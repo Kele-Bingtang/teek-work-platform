@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.ag.system.mapper.LoginLogMapper">
+<mapper namespace="top.teek.ag.system.mapper.LoginLogMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.ag.system.model.po.LoginLog">
+    <resultMap id="BaseResultMap" type="top.teek.ag.system.model.po.LoginLog">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="loginId" column="login_id" jdbcType="VARCHAR"/>
             <result property="username" column="username" jdbcType="VARCHAR"/>

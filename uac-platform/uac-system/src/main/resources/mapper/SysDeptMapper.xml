@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.SysDeptMapper">
+<mapper namespace="top.teek.uac.system.mapper.SysDeptMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.SysDept">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.SysDept">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="deptId" column="dept_id" jdbcType="VARCHAR"/>
             <result property="parentId" column="parent_id" jdbcType="VARCHAR"/>

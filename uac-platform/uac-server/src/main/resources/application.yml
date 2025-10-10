@@ -46,13 +46,13 @@ spring.jackson:
 # 日志配置
 logging:
   level:
-    cn.youngkbt: @logging.level@
+    top.teek: @logging.level@
     org.springframework: warn
   config: classpath:logback-plus.xml
 
 mybatis-plus:
   mapperLocations: classpath*:mapper/**/*Mapper.xml
-  scanPackage: cn.youngkbt.uac.system.**.mapper
+  scanPackage: top.teek.uac.system.**.mapper
 
 # security 配置
 security:
@@ -137,7 +137,7 @@ mybatis-encryptor:
   # 是否开启加密
   enable: true
   # 加密实体类包路径
-  class-package: cn.youngkbt.uac.demo
+  class-package: top.teek.uac.demo
   # 默认加密算法
   algorithm: BASE64
   # 编码方式 BASE64/HEX。默认BASE64

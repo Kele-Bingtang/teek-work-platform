@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.youngkbt</groupId>
-    <artifactId>work-platform</artifactId>
+    <groupId>top.teek</groupId>
+    <artifactId>teek-work-platform</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
     <modules>
@@ -204,7 +204,7 @@
             </dependency>
 
             <!--<dependency>-->
-            <!--    <groupId>cn.youngkbt</groupId>-->
+            <!--    <groupId>top.teek</groupId>-->
             <!--    <artifactId>dbdtobean-spring-boot-starter</artifactId>-->
             <!--    <version>1.6</version>-->
             <!--</dependency>-->

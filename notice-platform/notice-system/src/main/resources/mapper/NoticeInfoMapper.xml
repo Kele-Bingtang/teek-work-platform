@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.notice.system.mapper.NoticeInfoMapper">
+<mapper namespace="top.teek.notice.system.mapper.NoticeInfoMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.notice.system.model.po.NoticeInfo">
+    <resultMap id="BaseResultMap" type="top.teek.notice.system.model.po.NoticeInfo">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="noticeId" column="notice_id" jdbcType="VARCHAR"/>
             <result property="appId" column="app_id" jdbcType="VARCHAR"/>

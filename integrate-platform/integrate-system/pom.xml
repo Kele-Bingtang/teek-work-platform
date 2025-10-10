@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>cn.youngkbt</groupId>
+        <groupId>top.teek</groupId>
         <artifactId>integrate-platform</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -19,7 +19,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>integrate-core</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -28,12 +28,12 @@
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-mybatisplus</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-excel</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -54,7 +54,7 @@
             <artifactId>feign-httpclient</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-thread</artifactId>
             <version>1.0.0</version>
         </dependency>

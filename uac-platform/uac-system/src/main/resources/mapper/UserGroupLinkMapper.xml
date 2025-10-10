@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.UserGroupLinkMapper">
+<mapper namespace="top.teek.uac.system.mapper.UserGroupLinkMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.UserGroupLink">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.UserGroupLink">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="VARCHAR"/>
             <result property="userGroupId" column="user_group_uid" jdbcType="VARCHAR"/>
@@ -26,28 +26,28 @@
         status,is_deleted,tenant_id
     </sql>
 
-    <select id="listUserGroupByUserId" resultType="cn.youngkbt.uac.system.model.vo.link.UserGroupLinkVO">
+    <select id="listUserGroupByUserId" resultType="top.teek.uac.system.model.vo.link.UserGroupLinkVO">
         select tsug.group_name, tsug.app_id, tugl.id as link_id, tugl.valid_from, tugl.expire_on, tugl.create_time
         from t_sys_user_group tsug
         join t_user_group_link tugl on tsug.group_id = tugl.user_group_id and tugl.is_deleted = 0
         ${ew.getCustomSqlSegment}
     </select>
     
-    <select id="listUserLinkByGroupId" resultType="cn.youngkbt.uac.system.model.vo.link.UserLinkVO">
+    <select id="listUserLinkByGroupId" resultType="top.teek.uac.system.model.vo.link.UserLinkVO">
         select tsu.user_id, tsu.username, tsu.nickname, tugl.id as link_id, tugl.valid_from, tugl.expire_on, tugl.create_time, tugl.app_id
         from t_sys_user tsu
         join t_user_group_link tugl on tsu.user_id = tugl.user_id and tugl.is_deleted = 0
         ${ew.getCustomSqlSegment}
     </select>
 
-    <select id="selectWithDisabledByUserId" resultType="cn.youngkbt.uac.system.model.vo.link.UserGroupBindSelectVO">
+    <select id="selectWithDisabledByUserId" resultType="top.teek.uac.system.model.vo.link.UserGroupBindSelectVO">
         select tsug.group_id, tsug.group_name, case when tugl.user_id is not null then 1 else 0 end as disabled
         from t_sys_user_group tsug
         left join t_user_group_link tugl on tsug.group_id = tugl.user_group_id and tugl.user_id = #{userId} and tugl.is_deleted = 0
         where tsug.app_id = #{appId} and tsug.is_deleted = 0
     </select>
 
-    <select id="listWithDisabledByGroupId" resultType="cn.youngkbt.uac.system.model.vo.link.UserBindSelectVO">
+    <select id="listWithDisabledByGroupId" resultType="top.teek.uac.system.model.vo.link.UserBindSelectVO">
         select tsu.user_id, tsu.username, tsu.nickname, case when tugl.user_group_id is not null then 1 else 0 end as disabled
         from t_sys_user tsu
         left join t_user_group_link tugl on tsu.user_id = tugl.user_id and tugl.is_deleted = 0 and tugl.user_group_id = #{userGroupId}

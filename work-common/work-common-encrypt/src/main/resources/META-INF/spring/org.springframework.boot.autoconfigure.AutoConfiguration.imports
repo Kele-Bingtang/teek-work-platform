@@ -1,2 +1,2 @@
-cn.youngkbt.encrypt.config.EncryptorAutoConfiguration
-cn.youngkbt.encrypt.config.ApiDecryptAutoConfiguration
+top.teek.encrypt.config.EncryptorAutoConfiguration
+top.teek.encrypt.config.ApiDecryptAutoConfiguration

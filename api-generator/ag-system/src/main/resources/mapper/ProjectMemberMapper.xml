@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.ag.system.mapper.ProjectMemberMapper">
+<mapper namespace="top.teek.ag.system.mapper.ProjectMemberMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.ag.system.model.po.ProjectMember">
+    <resultMap id="BaseResultMap" type="top.teek.ag.system.model.po.ProjectMember">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="VARCHAR"/>
             <result property="projectId" column="project_id" jdbcType="BIGINT"/>
@@ -29,7 +29,7 @@
         is_deleted,team_id
     </sql>
     
-    <select id="listProjectRole" resultType="cn.youngkbt.ag.system.model.vo.ProjectMemberVO">
+    <select id="listProjectRole" resultType="top.teek.ag.system.model.vo.ProjectMemberVO">
         select tpm.*, tp.project_name from t_project_member tpm join t_project tp on tpm.project_id = tp.project_id
         ${ew.getCustomSqlSegment}
     </select>

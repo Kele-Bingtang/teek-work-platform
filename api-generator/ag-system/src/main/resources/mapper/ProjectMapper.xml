@@ -2,16 +2,16 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.ag.system.mapper.ProjectMapper">
+<mapper namespace="top.teek.ag.system.mapper.ProjectMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.ag.system.model.po.Project">
+    <resultMap id="BaseResultMap" type="top.teek.ag.system.model.po.Project">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="projectId" column="project_id" jdbcType="VARCHAR"/>
             <result property="projectName" column="project_name" jdbcType="VARCHAR"/>
             <result property="baseUrl" column="base_url" jdbcType="VARCHAR"/>
             <result property="description" column="description" jdbcType="VARCHAR"/>
             <result property="secretKey" column="secret_key" jdbcType="VARCHAR"/>
-            <result property="dataSourceId" column="data_source_id" jdbcType="VARCHAR" typeHandler="cn.youngkbt.mp.type.ListStringTypeHandler"/>
+            <result property="dataSourceId" column="data_source_id" jdbcType="VARCHAR" typeHandler="top.teek.mp.type.ListStringTypeHandler"/>
             <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
             <result property="createById" column="create_by_id" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>

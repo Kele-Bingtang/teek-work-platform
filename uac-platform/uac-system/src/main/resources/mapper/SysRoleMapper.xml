@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.SysRoleMapper">
+<mapper namespace="top.teek.uac.system.mapper.SysRoleMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.SysRole">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.SysRole">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="roleId" column="role_id" jdbcType="VARCHAR"/>
             <result property="roleCode" column="role_code" jdbcType="VARCHAR"/>
@@ -32,7 +32,7 @@
         app_id
     </sql>
     
-    <select id="selectRoleListByUserId" resultType="cn.youngkbt.uac.system.model.po.SysRole">
+    <select id="selectRoleListByUserId" resultType="top.teek.uac.system.model.po.SysRole">
         -- 查询用户和角色关联的角色信息
         SELECT tsr.*
         FROM t_sys_role tsr

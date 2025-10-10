@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.file.system.mapper.FileInfoMapper">
+<mapper namespace="top.teek.file.system.mapper.FileInfoMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.file.system.model.po.FileInfo">
+    <resultMap id="BaseResultMap" type="top.teek.file.system.model.po.FileInfo">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="appId" column="app_id" jdbcType="VARCHAR"/>
             <result property="appModule" column="app_module" jdbcType="VARCHAR"/>

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.SysMenuMapper">
+<mapper namespace="top.teek.uac.system.mapper.SysMenuMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.SysMenu">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.SysMenu">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
             <result property="parentId" column="parent_id" jdbcType="VARCHAR"/>
@@ -16,7 +16,7 @@
             <result property="permission" column="permission" jdbcType="INTEGER"/>
             <result property="menuType" column="menu_type" jdbcType="INTEGER"/>
             <result property="component" column="component" jdbcType="VARCHAR"/>
-            <result property="meta" column="meta" jdbcType="VARCHAR" javaType="cn.youngkbt.uac.system.model.vo.router.Meta" typeHandler="cn.youngkbt.uac.system.config.MetaTypeHandler"/>
+            <result property="meta" column="meta" jdbcType="VARCHAR" javaType="top.teek.uac.system.model.vo.router.Meta" typeHandler="top.teek.uac.system.config.MetaTypeHandler"/>
             <result property="intro" column="intro" jdbcType="VARCHAR"/>
             <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
             <result property="createById" column="create_by_id" jdbcType="VARCHAR"/>

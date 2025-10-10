@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.SysTenantMapper">
+<mapper namespace="top.teek.uac.system.mapper.SysTenantMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.SysTenant">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.SysTenant">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
             <result property="licenseNumber" column="license_number" jdbcType="VARCHAR"/>

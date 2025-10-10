@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.UserGroupRoleLinkMapper">
+<mapper namespace="top.teek.uac.system.mapper.UserGroupRoleLinkMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.UserGroupRoleLink">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.UserGroupRoleLink">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="userGroupId" column="user_group_id" jdbcType="VARCHAR"/>
             <result property="roleId" column="role_id" jdbcType="VARCHAR"/>
@@ -26,28 +26,28 @@
         status,is_deleted,app_id
     </sql>
     
-    <select id="listRoleLinkByGroupId" resultType="cn.youngkbt.uac.system.model.vo.link.RoleLinkVO">
+    <select id="listRoleLinkByGroupId" resultType="top.teek.uac.system.model.vo.link.RoleLinkVO">
         select tsr.role_name, tsr.role_code, tugrl.id as link_id, tugrl.create_time, tugrl.app_id
         from t_sys_role tsr
         join t_user_group_role_link tugrl on tsr.role_id = tugrl.role_id and tugrl.is_deleted = 0 and tsr.app_id = tugrl.app_id
         ${ew.getCustomSqlSegment}
     </select>
 
-    <select id="listUserGroupByRoleId" resultType="cn.youngkbt.uac.system.model.vo.link.UserGroupLinkVO">
+    <select id="listUserGroupByRoleId" resultType="top.teek.uac.system.model.vo.link.UserGroupLinkVO">
         select tsug.group_name, tsug.intro, tsug.owner_id, tsug.owner_name, tsug.app_id, tugrl.id as link_id, tugrl.create_time, tugrl.app_id
         from t_sys_user_group tsug
         join t_user_group_role_link tugrl on tsug.group_id = tugrl.user_group_id and tugrl.is_deleted = 0 and tsug.app_id = tugrl.app_id
         ${ew.getCustomSqlSegment}
     </select>
 
-    <select id="listWithDisabledByGroupId" resultType="cn.youngkbt.uac.system.model.vo.link.RoleBindSelectVO">
+    <select id="listWithDisabledByGroupId" resultType="top.teek.uac.system.model.vo.link.RoleBindSelectVO">
         select tsr.role_id, tsr.role_code, tsr.role_name, case when tugrl.user_group_id is not null then 1 else 0 end as disabled
         from t_sys_role tsr
         left join t_user_group_role_link tugrl on tsr.role_id = tugrl.role_id and tugrl.is_deleted = 0 and tsr.app_id = tugrl.app_id and tugrl.user_group_id = #{userGroupId}
         where tsr.is_deleted = 0
     </select>
     
-    <select id="listWithDisabledByRoleId" resultType="cn.youngkbt.uac.system.model.vo.link.UserGroupBindSelectVO">
+    <select id="listWithDisabledByRoleId" resultType="top.teek.uac.system.model.vo.link.UserGroupBindSelectVO">
         select tsug.group_id, tsug.group_name, case when tugrl.role_id is not null then 1 else 0 end as disabled
         from t_sys_user_group tsug
         left join t_user_group_role_link tugrl on tsug.group_id = tugrl.user_group_id and tugrl.app_id = tsug.app_id and tugrl.is_deleted = 0 and tugrl.role_id = #{roleId}

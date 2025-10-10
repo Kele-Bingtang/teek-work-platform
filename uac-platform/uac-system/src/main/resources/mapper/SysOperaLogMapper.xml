@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.SysOperaLogMapper">
+<mapper namespace="top.teek.uac.system.mapper.SysOperaLogMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.SysOperaLog">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.SysOperaLog">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="operaId" column="opera_id" jdbcType="VARCHAR"/>
             <result property="businessType" column="business_type" jdbcType="TINYINT"/>

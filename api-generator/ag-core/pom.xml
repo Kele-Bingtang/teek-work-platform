@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>cn.youngkbt.api-generator</groupId>
+        <groupId>top.teek.api-generator</groupId>
         <artifactId>api-generator</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -19,22 +19,22 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-core</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-security</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-doc</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-mybatisplus</artifactId>
             <version>1.0.0</version>
         </dependency>

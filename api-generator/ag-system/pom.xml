@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>cn.youngkbt.api-generator</groupId>
+        <groupId>top.teek.api-generator</groupId>
         <artifactId>api-generator</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -19,12 +19,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.youngkbt.api-generator</groupId>
+            <groupId>top.teek.api-generator</groupId>
             <artifactId>ag-core</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-thread</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -33,47 +33,47 @@
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-mybatisplus</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-redis</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-sensitive</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-encrypt</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-idempotent</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-excel</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-websocket</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-rateLimit</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-cache</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -86,7 +86,7 @@
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.youngkbt</groupId>
+            <groupId>top.teek</groupId>
             <artifactId>work-common-datasource</artifactId>
             <version>1.0.0</version>
         </dependency>

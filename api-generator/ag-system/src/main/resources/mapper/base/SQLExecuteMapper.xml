@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.youngkbt.ag.system.mapper.base.SQLExecuteMapper">
+<mapper namespace="top.teek.ag.system.mapper.base.SQLExecuteMapper">
 
-    <insert id="executeInsert" parameterType="cn.youngkbt.ag.system.model.bo.BatchOperateBO" useGeneratedKeys="true" keyProperty="data.id">
+    <insert id="executeInsert" parameterType="top.teek.ag.system.model.bo.BatchOperateBO" useGeneratedKeys="true" keyProperty="data.id">
         INSERT INTO ${tableName}
         <foreach item="item" collection="data.getColumnList()" separator="," open="(" close=")">
             ${item.column}

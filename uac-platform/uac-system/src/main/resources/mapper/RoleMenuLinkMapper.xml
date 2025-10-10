@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.RoleMenuLinkMapper">
+<mapper namespace="top.teek.uac.system.mapper.RoleMenuLinkMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.RoleMenuLink">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.RoleMenuLink">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="roleId" column="role_id" jdbcType="VARCHAR"/>
             <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
@@ -26,7 +26,7 @@
         status,is_deleted,app_id
     </sql>
     
-    <select id="listMenuListByRoleId" resultType="cn.youngkbt.uac.system.model.po.SysMenu">
+    <select id="listMenuListByRoleId" resultType="top.teek.uac.system.model.po.SysMenu">
         select
             tsm.*, case when trml.menu_id is null then 0 else 1 end as selected
         from

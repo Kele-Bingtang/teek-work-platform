@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.RoleDeptLinkMapper">
+<mapper namespace="top.teek.uac.system.mapper.RoleDeptLinkMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.RoleDeptLink">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.RoleDeptLink">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="roleId" column="role_id" jdbcType="VARCHAR"/>
             <result property="deptId" column="dept_id" jdbcType="VARCHAR"/>
@@ -26,7 +26,7 @@
         status,is_deleted,app_id
     </sql>
     
-    <select id="listDeptListByRoleId" resultType="cn.youngkbt.uac.system.model.po.SysDept">
+    <select id="listDeptListByRoleId" resultType="top.teek.uac.system.model.po.SysDept">
         select
             tsd.*, case when trdl.dept_id is null then 0 else 1 end as selected
         from

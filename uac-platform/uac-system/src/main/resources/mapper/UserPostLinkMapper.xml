@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.uac.system.mapper.UserPostLinkMapper">
+<mapper namespace="top.teek.uac.system.mapper.UserPostLinkMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.uac.system.model.po.UserPostLink">
+    <resultMap id="BaseResultMap" type="top.teek.uac.system.model.po.UserPostLink">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="VARCHAR"/>
             <result property="postId" column="post_id" jdbcType="VARCHAR"/>
@@ -26,7 +26,7 @@
         status,is_deleted,tenant_id
     </sql>
     
-    <select id="listPostByUserId" resultType="cn.youngkbt.uac.system.model.po.SysPost">
+    <select id="listPostByUserId" resultType="top.teek.uac.system.model.po.SysPost">
         select * from t_sys_post tsp
         join t_user_post_link tupl on tsp.post_id = tupl.post_id and tupl.is_deleted = 0
         ${ew.getCustomSqlSegment}

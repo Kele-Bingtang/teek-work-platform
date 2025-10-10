@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.youngkbt.ag.system.mapper.ServiceInfoMapper">
+<mapper namespace="top.teek.ag.system.mapper.ServiceInfoMapper">
 
-    <resultMap id="BaseResultMap" type="cn.youngkbt.ag.system.model.po.ServiceInfo">
+    <resultMap id="BaseResultMap" type="top.teek.ag.system.model.po.ServiceInfo">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="serviceId" column="service_id" jdbcType="VARCHAR"/>
             <result property="serviceName" column="service_name" jdbcType="VARCHAR"/>
@@ -44,7 +44,7 @@
         project_id,team_id
     </sql>
     
-    <select id="selectPageData" resultType="cn.youngkbt.ag.system.model.vo.ServiceInfoVO">
+    <select id="selectPageData" resultType="top.teek.ag.system.model.vo.ServiceInfoVO">
         select ts.*, tr.report_title
         from t_service ts
         left join t_report tr on ts.report_id = tr.report_id

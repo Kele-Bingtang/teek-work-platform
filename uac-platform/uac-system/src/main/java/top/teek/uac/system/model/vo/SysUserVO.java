@@ -1,15 +1,16 @@
 package top.teek.uac.system.model.vo;
 
-import top.teek.excel.annotation.ExcelDictFormat;
-import top.teek.excel.convert.ExcelDictConvert;
-import top.teek.uac.system.export.NormalStatusHandler;
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
+import top.teek.excel.annotation.ExcelDictFormat;
+import top.teek.excel.convert.ExcelDictConvert;
+import top.teek.uac.system.export.NormalStatusHandler;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author Teeker
@@ -124,4 +125,14 @@ public class SysUserVO implements Serializable {
      */
     @ExcelIgnore
     private Boolean disabled;
+    /**
+     * 岗位 ID
+     */
+    @ExcelIgnore
+    private String postId;
+    /**
+     * 岗位 ID，基于 postId 进行逗号切割
+     */
+    @ExcelIgnore
+    private List<String> postIds;
 }

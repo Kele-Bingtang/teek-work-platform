@@ -67,6 +67,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         QueryWrapper<SysUser> wrapper = buildQueryWrapper(sysUserDTO);
         IPage<SysUserVO> sysUserVOIPage = baseMapper.selectListWithPage(pageQuery.buildPage(), wrapper);
 
+        sysUserVOIPage.getRecords().forEach(sysUserVO -> {
+            if (StringUtil.hasText(sysUserVO.getPostId())) {
+                sysUserVO.setPostIds(List.of(sysUserVO.getPostId().split(",")));
+            }
+        });
+
         return TablePage.build(sysUserVOIPage);
     }
 

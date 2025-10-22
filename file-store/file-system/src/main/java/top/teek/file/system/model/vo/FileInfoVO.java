@@ -12,6 +12,10 @@ import java.time.LocalDateTime;
 @Data
 public class FileInfoVO {
     /**
+     * 主键
+     */
+    private Long id;
+    /**
      * 应用系统标识
      */
     private String appId;

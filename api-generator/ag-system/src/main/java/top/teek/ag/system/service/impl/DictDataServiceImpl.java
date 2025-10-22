@@ -58,7 +58,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
 
     private LambdaQueryWrapper<DictData> buildQueryWrapper(DictDataDTO dictDataDTO) {
         return Wrappers.<DictData>lambdaQuery()
-                .eq(StringUtil.hasText(dictDataDTO.getDictLabel()), DictData::getDictLabel, dictDataDTO.getDictCode())
+                .eq(StringUtil.hasText(dictDataDTO.getDictLabel()), DictData::getDictLabel, dictDataDTO.getDictLabel())
                 .eq(StringUtil.hasText(dictDataDTO.getDictCode()), DictData::getDictCode, dictDataDTO.getDictCode())
                 .eq(Objects.nonNull(dictDataDTO.getDictSort()), DictData::getDictSort, dictDataDTO.getDictSort())
                 .orderByAsc(DictData::getDictSort);

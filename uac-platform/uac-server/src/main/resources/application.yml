@@ -21,7 +21,9 @@ spring:
   mvc:
     format:
       date-time: yyyy-MM-dd HH:mm:ss
-      
+  main:
+    allow-bean-definition-overriding: true
+    
 ---  # 文件上传
 spring.servlet.multipart:
   # 单个文件大小

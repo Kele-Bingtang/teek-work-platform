@@ -50,6 +50,7 @@ public class TeamServiceImpl extends ServiceImpl<TeamMapper, Team> implements Te
                         .setTitle("团队管理")
                         .setIcon("tdesign:user-circle")
                         .setAlwaysShowRoot(true)
+                        .setRank(2)
                 );
 
         // 构建二级菜单

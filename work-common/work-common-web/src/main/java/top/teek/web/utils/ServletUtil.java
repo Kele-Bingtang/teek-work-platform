@@ -116,7 +116,7 @@ public class ServletUtil extends JakartaServletUtil {
         if (request == null) {
             return null;
         }
-        return ServletUtil.getClientIp(request);
+        return getClientIp(request);
     }
 
     public static boolean isJsonRequest(ServletRequest request) {

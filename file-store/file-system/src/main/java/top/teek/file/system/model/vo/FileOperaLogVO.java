@@ -12,6 +12,10 @@ import java.time.LocalDateTime;
 @Data
 public class FileOperaLogVO {
     /**
+     * 主键
+     */
+    private Long id;
+    /**
      * 日志 ID
      */
     private String operaId;

@@ -12,6 +12,10 @@ import java.time.LocalDateTime;
 @Data
 public class AppInfoVO {
     /**
+     * 主键
+     */
+    private Long id;
+    /**
      * 应用 ID
      */
     private String appId;

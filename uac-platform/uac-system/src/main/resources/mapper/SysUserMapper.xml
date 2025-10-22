@@ -72,10 +72,15 @@
     <select id="selectListWithPage" resultMap="BaseResultMapVo">
         select su.id, su.user_id, su.username, su.nickname, su.email, su.sex, su.birthday, su.phone, su.avatar, su.register_time,
             su.login_ip, su.login_time, su.user_status, su.status, su.dept_id,
-            sd.dept_name, sd.leader, su1.user_id as leader_name
+            sd.dept_name, sd.leader, su1.user_id as leader_name, upl.post_id
         from t_sys_user su
         left join t_sys_dept sd on su.dept_id = sd.dept_id and sd.is_deleted = 0
         left join t_sys_user su1 on su1.user_id = sd.leader and su1.is_deleted = 0
+        left join (
+            select user_id, group_concat(post_id) as post_id 
+            from t_user_post_link where is_deleted = 0
+            group by user_id
+        ) upl on su.user_id = upl.user_id
         ${ew.getCustomSqlSegment}
     </select>
 

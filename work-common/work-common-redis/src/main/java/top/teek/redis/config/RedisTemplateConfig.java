@@ -1,6 +1,7 @@
 package top.teek.redis.config;
 
 import cn.hutool.core.date.DatePattern;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import top.teek.redis.utils.RedisUtil;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -75,6 +76,8 @@ public class RedisTemplateConfig {
         ObjectMapper objectMapper = new ObjectMapper();
         // 配置忽略未知字段
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        // 指定序列化输入的类型，类必须是非 final 修饰的。序列化时将对象全类名一起保存下来
+        objectMapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL);
 
         // 解决 Redis 无法存入 LocalDateTime 等 JDK8 的时间类
         JavaTimeModule javaTimeModule = new JavaTimeModule();

@@ -1,12 +1,13 @@
 package top.teek.uac.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import jakarta.validation.constraints.NotNull;
 import top.teek.mp.base.PageQuery;
 import top.teek.mp.base.TablePage;
 import top.teek.uac.system.model.dto.SysAppDTO;
 import top.teek.uac.system.model.po.SysApp;
 import top.teek.uac.system.model.vo.SysAppVO;
 import top.teek.uac.system.model.vo.extra.AppTreeVO;
-import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
 
@@ -22,7 +23,15 @@ public interface SysAppService extends IService<SysApp> {
      * @param appId 应用 ID
      * @return 应用信息
      */
-    SysApp checkAppIdThenGet(String tenantId,String appId);
+    SysApp checkAppIdThenGet(String tenantId, String appId);
+
+    /**
+     * 通过应用 ID 获取应用信息
+     *
+     * @param appId 应用 ID
+     * @return 应用信息
+     */
+    SysAppVO getOne(@NotNull(message = "应用 ID 不能为空") String appId);
 
     /**
      * 通过条件查询 App 清单列表
@@ -82,8 +91,10 @@ public interface SysAppService extends IService<SysApp> {
 
     /**
      * 检查应用编码是否唯一
+     *
      * @param sysAppDTO 应用信息
      * @return 是否唯一
      */
     boolean checkAppCodeUnique(SysAppDTO sysAppDTO);
+
 }

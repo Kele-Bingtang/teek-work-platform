@@ -36,6 +36,12 @@ public class SysAppServiceImpl extends ServiceImpl<SysAppMapper, SysApp> impleme
     }
 
     @Override
+    public SysAppVO getOne(String appId) {
+        SysApp sysApp = baseMapper.selectOne(Wrappers.<SysApp>lambdaQuery().eq(SysApp::getAppId, appId));
+        return MapstructUtil.convert(sysApp, SysAppVO.class);
+    }
+
+    @Override
     public List<SysAppVO> listAll(SysAppDTO sysAppDTO) {
         LambdaQueryWrapper<SysApp> wrapper = buildQueryWrapper(sysAppDTO);
         List<SysApp> sysAppList = baseMapper.selectList(wrapper);

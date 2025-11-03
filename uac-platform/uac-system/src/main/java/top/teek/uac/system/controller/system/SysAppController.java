@@ -42,6 +42,14 @@ public class SysAppController {
     private final SysMenuService sysMenuService;
     private final SysDictTypeService sysDictTypeService;
 
+    @GetMapping("/getOne/{appId}")
+    @Operation(summary = "应用列表查询", description = "通过应用条件查询应用列表")
+    @PreAuthorize("hasAuthority('system:app:list')")
+    public Response<SysAppVO> getOne(@NotNull(message = "应用 ID 不能为空") @PathVariable String appId) {
+        SysAppVO sysAppVO = sysAppService.getOne(appId);
+        return HttpResult.ok(sysAppVO);
+    }
+    
     @GetMapping("/list")
     @Operation(summary = "应用列表查询", description = "通过应用条件查询应用列表")
     @PreAuthorize("hasAuthority('system:app:list')")

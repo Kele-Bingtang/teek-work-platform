@@ -1,10 +1,10 @@
 package top.teek.uac.system.model.vo;
 
+import com.alibaba.excel.annotation.ExcelProperty;
+import lombok.Data;
 import top.teek.excel.annotation.ExcelDictFormat;
 import top.teek.excel.convert.ExcelDictConvert;
 import top.teek.uac.system.export.NormalStatusHandler;
-import com.alibaba.excel.annotation.ExcelProperty;
-import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -44,6 +44,13 @@ public class SysAppVO implements Serializable {
     private String appName;
 
     /**
+     * 应用类型
+     */
+    @ExcelProperty(value = "应用类型", converter = ExcelDictConvert.class)
+    @ExcelDictFormat(readExp = "1:自研, 2:软件包")
+    private String appType;
+
+    /**
      * 应用介绍
      */
     @ExcelProperty("应用介绍")
@@ -75,10 +82,22 @@ public class SysAppVO implements Serializable {
     private Integer status;
 
     /**
-     * 创建时间
+     * 更新人
      */
-    @ExcelProperty("创建时间")
-    private LocalDateTime createTime;
+    @ExcelProperty("更新人")
+    public String updateBy;
+
+    /**
+     * 更新人 id
+     */
+    @ExcelProperty("更新人 id")
+    public String updateById;
+
+    /**
+     * 更新时间
+     */
+    @ExcelProperty("更新时间")
+    public LocalDateTime updateTime;
 
     /**
      * 客户端 ID

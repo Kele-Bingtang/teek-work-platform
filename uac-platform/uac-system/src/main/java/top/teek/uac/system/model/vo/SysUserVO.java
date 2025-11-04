@@ -55,7 +55,8 @@ public class SysUserVO implements Serializable {
     /**
      * 性别（0 保密 1 男 2 女）
      */
-    @ExcelProperty("性别")
+    @ExcelProperty(value = "性别", converter = ExcelDictConvert.class)
+    @ExcelDictFormat(readExp = "0:保密, 1:男, 2:女")
     private Integer sex;
 
     /**
@@ -125,6 +126,7 @@ public class SysUserVO implements Serializable {
      */
     @ExcelIgnore
     private Boolean disabled;
+
     /**
      * 岗位 ID
      */

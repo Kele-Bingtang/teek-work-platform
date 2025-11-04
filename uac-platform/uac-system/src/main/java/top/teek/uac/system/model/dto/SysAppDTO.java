@@ -44,6 +44,12 @@ public class SysAppDTO {
     private String appName;
 
     /**
+     * 应用类型
+     */
+    @NotBlank(message = "应用类型不能为空", groups = {RestGroup.AddGroup.class})
+    private String appType;
+
+    /**
      * 应用介绍
      */
     private String intro;
@@ -63,11 +69,6 @@ public class SysAppDTO {
      * 负责人 username
      */
     private String ownerName;
-
-    /**
-     * 部门 ID
-     */
-    private String deptId;
 
     /**
      * 客户端 ID

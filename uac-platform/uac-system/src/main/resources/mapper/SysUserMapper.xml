@@ -39,8 +39,11 @@
 
     <resultMap id="deptResult" type="top.teek.uac.system.model.vo.SysDeptVO">
         <id property="deptId" column="dept_id"/>
+        <result property="deptName" column="dept_name"/>
+        <result property="leader" column="leader"/>
         <result property="email" column="dept_email"/>
         <result property="status" column="dept_status"/>
+        <result property="phone" column="dept_phone"/>
         <result property="createTime" column="dept_create_time"/>
     </resultMap>
 
@@ -62,17 +65,17 @@
     <select id="queryList" resultType="top.teek.uac.system.model.vo.SysUserVO">
         select su.id, su.user_id, su.username, su.nickname, su.email, su.sex, su.birthday, su.phone, su.avatar, su.register_time,
             su.login_ip, su.login_time, su.user_status, su.status, su.dept_id,
-            sd.dept_name, sd.leader, su1.user_id as leader_name
+            sd.dept_name, sd.leader, su1.user_id as leader_id
         from t_sys_user su
-        left join (select * from t_sys_dept where is_deleted = 0) sd on su.dept_id = sd.dept_id
-        left join (select * from t_sys_user where is_deleted = 0) su1 on su1.user_id = sd.leader
+        left join t_sys_dept sd on su.dept_id = sd.dept_id and sd.is_deleted = 0
+        left join t_sys_user su1 on su1.user_id = sd.leader and su1.is_deleted = 0
         ${ew.getCustomSqlSegment}
     </select>
     
     <select id="selectListWithPage" resultMap="BaseResultMapVo">
         select su.id, su.user_id, su.username, su.nickname, su.email, su.sex, su.birthday, su.phone, su.avatar, su.register_time,
             su.login_ip, su.login_time, su.user_status, su.status, su.dept_id,
-            sd.dept_name, sd.leader, su1.user_id as leader_name, upl.post_id
+            sd.dept_name, sd.leader, su1.user_id as leader_id, upl.post_id
         from t_sys_user su
         left join t_sys_dept sd on su.dept_id = sd.dept_id and sd.is_deleted = 0
         left join t_sys_user su1 on su1.user_id = sd.leader and su1.is_deleted = 0

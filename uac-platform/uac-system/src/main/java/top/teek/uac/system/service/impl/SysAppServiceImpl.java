@@ -62,7 +62,6 @@ public class SysAppServiceImpl extends ServiceImpl<SysAppMapper, SysApp> impleme
                 .eq(StringUtil.hasText(sysAppDTO.getAppCode()), SysApp::getAppCode, sysAppDTO.getAppCode())
                 .eq(StringUtil.hasText(sysAppDTO.getAppName()), SysApp::getAppName, sysAppDTO.getAppName())
                 .eq(Objects.nonNull(sysAppDTO.getStatus()), SysApp::getStatus, sysAppDTO.getStatus())
-                .eq(StringUtil.hasText(sysAppDTO.getDeptId()), SysApp::getDeptId, sysAppDTO.getDeptId())
                 .eq(StringUtil.hasText(sysAppDTO.getClientId()), SysApp::getClientId, sysAppDTO.getClientId())
                 .orderByAsc(SysApp::getOrderNum);
     }

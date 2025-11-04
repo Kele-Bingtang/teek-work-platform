@@ -39,6 +39,11 @@ public class SysApp extends BaseDO {
      * 应用名
      */
     private String appName;
+    
+    /**
+     * 应用类型
+     */
+    private String appType;
 
     /**
      * 应用介绍
@@ -65,10 +70,6 @@ public class SysApp extends BaseDO {
      */
     private String tenantId;
 
-    /**
-     * 部门 ID
-     */
-    private String deptId;
 
     /**
      * 客户端 ID

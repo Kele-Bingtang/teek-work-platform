@@ -176,7 +176,6 @@ public class SysTenantServiceImpl extends ServiceImpl<SysTenantMapper, SysTenant
                 .setOrderNum(sysApp.getOrderNum())
                 .setOwnerId(sysApp.getOwnerId())
                 .setOwnerName(sysApp.getOwnerName())
-                .setDeptId(sysApp.getDeptId())
                 .setClientId(sysApp.getClientId())
                 .setTenantId(tenantId);
 

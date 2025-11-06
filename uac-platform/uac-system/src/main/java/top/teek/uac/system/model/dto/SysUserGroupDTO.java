@@ -31,6 +31,11 @@ public class SysUserGroupDTO {
     private String groupName;
 
     /**
+     * 用户组类型
+     */
+    private String groupType;
+
+    /**
      * 用户组描述
      */
     private String intro;
@@ -44,10 +49,4 @@ public class SysUserGroupDTO {
      * 负责人 username
      */
     private String ownerName;
-
-    /**
-     * 应用 ID
-     */
-    @NotBlank(message = "应用 ID 不能为空", groups = {RestGroup.AddGroup.class})
-    private String appId;
 }

@@ -57,4 +57,9 @@ public class SysPost extends BaseDO {
      */
     private String tenantId;
 
+    /**
+     * 部门 ID
+     */
+    private String deptId;
+
 }

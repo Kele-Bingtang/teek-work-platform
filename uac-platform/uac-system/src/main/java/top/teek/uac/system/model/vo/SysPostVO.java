@@ -1,5 +1,6 @@
 package top.teek.uac.system.model.vo;
 
+import com.alibaba.excel.annotation.ExcelIgnore;
 import top.teek.excel.annotation.ExcelDictFormat;
 import top.teek.excel.convert.ExcelDictConvert;
 import top.teek.uac.system.export.NormalStatusHandler;
@@ -74,5 +75,11 @@ public class SysPostVO implements Serializable {
      */
     @ExcelProperty("创建时间")
     private LocalDateTime createTime;
+
+    /**
+     * 部门 ID
+     */
+    @ExcelIgnore
+    private String deptId;
 
 }

@@ -32,6 +32,11 @@ public class SysUserGroup extends BaseDO {
     private String groupName;
 
     /**
+     * 用户组类型
+     */
+    private String groupType;
+
+    /**
      * 用户组描述
      */
     private String intro;
@@ -50,10 +55,5 @@ public class SysUserGroup extends BaseDO {
      * 租户编号
      */
     private String tenantId;
-
-    /**
-     * 应用 ID
-     */
-    private String appId;
 
 }

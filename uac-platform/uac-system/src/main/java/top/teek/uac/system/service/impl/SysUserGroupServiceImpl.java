@@ -35,7 +35,7 @@ public class SysUserGroupServiceImpl extends ServiceImpl<SysUserGroupMapper, Sys
 
     private final UserGroupLinkService userGroupLinkService;
     private final UserGroupRoleLinkService userGroupRoleLinkService;
-    
+
     @Override
     public List<SysUserGroupVO> listAll(SysUserGroupDTO sysUserGroupDTO) {
         LambdaQueryWrapper<SysUserGroup> wrapper = buildQueryWrapper(sysUserGroupDTO);
@@ -48,14 +48,15 @@ public class SysUserGroupServiceImpl extends ServiceImpl<SysUserGroupMapper, Sys
     public TablePage<SysUserGroupVO> listPage(SysUserGroupDTO sysUserGroupDTO, PageQuery pageQuery) {
         LambdaQueryWrapper<SysUserGroup> wrapper = buildQueryWrapper(sysUserGroupDTO);
         Page<SysUserGroup> sysUserGroupPage = baseMapper.selectPage(pageQuery.buildPage(), wrapper);
-        
+
         return TablePage.build(sysUserGroupPage, SysUserGroupVO.class);
     }
 
     private LambdaQueryWrapper<SysUserGroup> buildQueryWrapper(SysUserGroupDTO sysUserGroupDTO) {
         return Wrappers.<SysUserGroup>lambdaQuery()
                 .eq(StringUtil.hasText(sysUserGroupDTO.getGroupName()), SysUserGroup::getGroupName, sysUserGroupDTO.getGroupName())
-                .eq(StringUtil.hasText(sysUserGroupDTO.getAppId()), SysUserGroup::getAppId, sysUserGroupDTO.getAppId())
+                .eq(StringUtil.hasText(sysUserGroupDTO.getGroupType()), SysUserGroup::getGroupType, sysUserGroupDTO.getGroupType())
+                .like(StringUtil.hasText(sysUserGroupDTO.getGroupId()), SysUserGroup::getGroupId, sysUserGroupDTO.getGroupId())
                 .orderByAsc(SysUserGroup::getCreateTime);
     }
 

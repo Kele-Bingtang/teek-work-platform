@@ -8,6 +8,7 @@ import top.teek.uac.system.model.po.SysUserGroup;
 import top.teek.uac.system.model.po.UserGroupLink;
 import top.teek.uac.system.model.po.UserGroupRoleLink;
 import top.teek.uac.system.model.vo.SysUserGroupVO;
+import top.teek.uac.system.model.vo.extra.UserGroupTreeVO;
 import top.teek.uac.system.service.SysUserGroupService;
 import top.teek.uac.system.service.UserGroupLinkService;
 import top.teek.uac.system.service.UserGroupRoleLinkService;
@@ -58,6 +59,15 @@ public class SysUserGroupServiceImpl extends ServiceImpl<SysUserGroupMapper, Sys
                 .eq(StringUtil.hasText(sysUserGroupDTO.getGroupType()), SysUserGroup::getGroupType, sysUserGroupDTO.getGroupType())
                 .like(StringUtil.hasText(sysUserGroupDTO.getGroupId()), SysUserGroup::getGroupId, sysUserGroupDTO.getGroupId())
                 .orderByAsc(SysUserGroup::getCreateTime);
+    }
+
+    @Override
+    public List<UserGroupTreeVO> listTreeList() {
+        List<SysUserGroup> sysUserGroupList = baseMapper.selectList(Wrappers.<SysUserGroup>lambdaQuery()
+                .select(SysUserGroup::getGroupId, SysUserGroup::getGroupName)
+                .orderByDesc(SysUserGroup::getUpdateTime)
+        );
+        return MapstructUtil.convert(sysUserGroupList, UserGroupTreeVO.class);
     }
 
     @Override

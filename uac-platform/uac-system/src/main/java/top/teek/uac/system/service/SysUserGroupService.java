@@ -6,6 +6,7 @@ import top.teek.uac.system.model.dto.SysUserGroupDTO;
 import top.teek.uac.system.model.po.SysUserGroup;
 import top.teek.uac.system.model.vo.SysUserGroupVO;
 import com.baomidou.mybatisplus.extension.service.IService;
+import top.teek.uac.system.model.vo.extra.UserGroupTreeVO;
 
 import java.util.List;
 
@@ -31,6 +32,13 @@ public interface SysUserGroupService extends IService<SysUserGroup> {
      * @return 用户组信息
      */
     TablePage<SysUserGroupVO> listPage(SysUserGroupDTO sysUserGroupDTO, PageQuery pageQuery);
+
+    /**
+     * 获取用户组树列表
+     *
+     * @return 用户组树列表
+     */
+    List<UserGroupTreeVO> listTreeList();
 
     /**
      * 检查用户组名是否唯一

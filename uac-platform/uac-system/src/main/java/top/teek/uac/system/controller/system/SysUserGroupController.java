@@ -1,5 +1,11 @@
 package top.teek.uac.system.controller.system;
 
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import top.teek.core.http.HttpResult;
 import top.teek.core.http.Response;
 import top.teek.core.validate.RestGroup;
@@ -15,17 +21,12 @@ import top.teek.uac.system.model.dto.link.UserGroupLinkInfoDTO;
 import top.teek.uac.system.model.dto.link.UserGroupLinkRoleDTO;
 import top.teek.uac.system.model.dto.link.UserGroupLinkUserDTO;
 import top.teek.uac.system.model.vo.SysUserGroupVO;
+import top.teek.uac.system.model.vo.extra.UserGroupTreeVO;
 import top.teek.uac.system.model.vo.link.UserGroupBindSelectVO;
 import top.teek.uac.system.model.vo.link.UserGroupLinkVO;
 import top.teek.uac.system.service.SysUserGroupService;
 import top.teek.uac.system.service.UserGroupLinkService;
 import top.teek.uac.system.service.UserGroupRoleLinkService;
-import io.swagger.v3.oas.annotations.Operation;
-import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -57,6 +58,14 @@ public class SysUserGroupController {
     public Response<TablePage<SysUserGroupVO>> listPage(SysUserGroupDTO sysUserGroupDTO, PageQuery pageQuery) {
         TablePage<SysUserGroupVO> tablePage = sysUserGroupService.listPage(sysUserGroupDTO, pageQuery);
         return HttpResult.ok(tablePage);
+    }
+
+    @GetMapping("/treeList")
+    @Operation(summary = "用户组树形列表查询", description = "查询用户组树形列表")
+    @PreAuthorize("hasAuthority('system:userGroup:query')")
+    public Response<List<UserGroupTreeVO>> listTreeList() {
+        List<UserGroupTreeVO> userGroupTreeVOList = sysUserGroupService.listTreeList();
+        return HttpResult.ok(userGroupTreeVOList);
     }
 
     @GetMapping("/listUserGroupByUserId/{appId}/{userId}")

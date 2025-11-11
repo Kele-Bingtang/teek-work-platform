@@ -34,7 +34,7 @@
     </select>
     
     <select id="listUserLinkByGroupId" resultType="top.teek.uac.system.model.vo.link.UserLinkVO">
-        select tsu.user_id, tsu.username, tsu.nickname, tugl.id as link_id, tugl.valid_from, tugl.expire_on, tugl.create_time, tugl.app_id
+        select tsu.user_id, tsu.username, tsu.nickname, tugl.id as link_id, tugl.valid_from, tugl.expire_on, tugl.create_time
         from t_sys_user tsu
         join t_user_group_link tugl on tsu.user_id = tugl.user_id and tugl.is_deleted = 0
         ${ew.getCustomSqlSegment}

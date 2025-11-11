@@ -41,8 +41,7 @@ public class UserGroupLinkServiceImpl extends ServiceImpl<UserGroupLinkMapper, U
     public boolean checkUserExistUserGroups(UserLinkUserGroupDTO userLinkUserGroupDTO) {
         return baseMapper.exists(Wrappers.<UserGroupLink>lambdaQuery()
                 .eq(UserGroupLink::getUserId, userLinkUserGroupDTO.getUserId())
-                .in(UserGroupLink::getUserGroupId, userLinkUserGroupDTO.getUserGroupIds())
-                .eq(StringUtil.hasText(userLinkUserGroupDTO.getAppId()), UserGroupLink::getAppId, userLinkUserGroupDTO.getAppId()));
+                .in(UserGroupLink::getUserGroupId, userLinkUserGroupDTO.getUserGroupIds()));
     }
 
     @Override
@@ -50,7 +49,6 @@ public class UserGroupLinkServiceImpl extends ServiceImpl<UserGroupLinkMapper, U
         return baseMapper.exists(Wrappers.<UserGroupLink>lambdaQuery()
                 .in(UserGroupLink::getUserId, userGroupLinkUserDTO.getUserIds())
                 .eq(UserGroupLink::getUserGroupId, userGroupLinkUserDTO.getUserGroupId())
-                .eq(StringUtil.hasText(userGroupLinkUserDTO.getAppId()), UserGroupLink::getAppId, userGroupLinkUserDTO.getAppId())
         );
     }
 
@@ -63,7 +61,6 @@ public class UserGroupLinkServiceImpl extends ServiceImpl<UserGroupLinkMapper, U
                                 .setUserId(userLinkUserGroupDTO.getUserId())
                                 .setValidFrom(userLinkUserGroupDTO.getValidFrom())
                                 .setExpireOn(userLinkUserGroupDTO.getExpireOn())
-                                .setAppId(userLinkUserGroupDTO.getAppId())
                 , UserGroupLink.class);
 
         return Db.saveBatch(userGroupLinkList);
@@ -78,7 +75,6 @@ public class UserGroupLinkServiceImpl extends ServiceImpl<UserGroupLinkMapper, U
                                 .setUserGroupId(userGroupLinkUserDTO.getUserGroupId())
                                 .setValidFrom(userGroupLinkUserDTO.getValidFrom())
                                 .setExpireOn(userGroupLinkUserDTO.getExpireOn())
-                                .setAppId(userGroupLinkUserDTO.getAppId())
                 , UserGroupLink.class);
 
         return Db.saveBatch(userGroupLinkList);

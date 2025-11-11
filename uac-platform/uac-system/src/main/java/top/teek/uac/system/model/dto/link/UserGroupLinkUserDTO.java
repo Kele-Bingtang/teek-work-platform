@@ -44,10 +44,4 @@ public class UserGroupLinkUserDTO {
      */
     @NotNull(message = "过期时间不能为空", groups = {RestGroup.AddGroup.class})
     private LocalDate expireOn;
-
-    /**
-     * 应用 ID
-     */
-    @NotNull(message = "应用 ID 不能为空", groups = {RestGroup.AddGroup.class})
-    private String appId;
 }

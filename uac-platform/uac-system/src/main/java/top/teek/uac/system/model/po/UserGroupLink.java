@@ -46,9 +46,4 @@ public class UserGroupLink extends BaseDO {
      */
     private String tenantId;
 
-    /**
-     * 应用 ID
-     */
-    private String appId;
-
 }

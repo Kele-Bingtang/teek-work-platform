@@ -1,11 +1,10 @@
 package top.teek.uac.system.model.dto;
 
-import top.teek.core.validate.RestGroup;
-import top.teek.uac.system.model.po.UserGroupLink;
 import io.github.linpeilie.annotations.AutoMapper;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import top.teek.core.validate.RestGroup;
+import top.teek.uac.system.model.po.UserGroupLink;
 
 import java.time.LocalDate;
 
@@ -44,10 +43,4 @@ public class UserGroupLinkDTO {
      */
     @NotNull(message = "过期时间不能为空", groups = {RestGroup.AddGroup.class, RestGroup.EditGroup.class})
     private LocalDate expireOn;
-
-    /**
-     * 应用 ID
-     */
-    @NotBlank(message = "应用 ID 不能为空", groups = {RestGroup.AddGroup.class})
-    private String appId;
 }

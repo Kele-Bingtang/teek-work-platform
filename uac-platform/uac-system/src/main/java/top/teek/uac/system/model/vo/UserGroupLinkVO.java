@@ -31,9 +31,4 @@ public class UserGroupLinkVO {
      * 失效时间
      */
     private LocalDate expireOn;
-
-    /**
-     * 应用 ID
-     */
-    private String appId;
 }

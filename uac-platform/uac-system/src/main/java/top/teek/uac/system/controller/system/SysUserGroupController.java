@@ -72,7 +72,7 @@ public class SysUserGroupController {
     @Operation(summary = "用户组列表查询", description = "查询某个用户所在的用户组列表")
     @PreAuthorize("hasAuthority('system:userGroup:query')")
     public Response<List<UserGroupLinkVO>> listUserGroupByUserId(@PathVariable String appId, @PathVariable String userId) {
-        List<UserGroupLinkVO> tablePage = userGroupLinkService.listUserGroupByUserId(appId, userId);
+        List<UserGroupLinkVO> tablePage = userGroupLinkService.listUserGroupByUserId(userId);
         return HttpResult.ok(tablePage);
     }
 

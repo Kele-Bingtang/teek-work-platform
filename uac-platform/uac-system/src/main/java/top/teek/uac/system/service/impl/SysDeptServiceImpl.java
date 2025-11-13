@@ -194,7 +194,7 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDept> impl
         return baseMapper.exists(Wrappers.<SysDept>lambdaQuery()
                 .eq(SysDept::getDeptName, sysDeptDTO.getDeptName())
                 .eq(SysDept::getParentId, sysDeptDTO.getParentId())
-                .ne(Objects.nonNull(sysDeptDTO.getId()), SysDept::getDeptId, sysDeptDTO.getId()));
+                .ne(Objects.nonNull(sysDeptDTO.getId()), SysDept::getId, sysDeptDTO.getId()));
     }
 
     /**

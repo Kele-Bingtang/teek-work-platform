@@ -72,6 +72,7 @@
         ${ew.getCustomSqlSegment}
     </select>
     
+    
     <select id="selectListWithPage" resultMap="BaseResultMapVo">
         select su.id, su.user_id, su.username, su.nickname, su.email, su.sex, su.birthday, su.phone, su.avatar, su.register_time,
             su.login_ip, su.login_time, su.user_status, su.status, su.dept_id,

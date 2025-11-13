@@ -49,4 +49,9 @@ public class SysUserGroupDTO {
      * 负责人 username
      */
     private String ownerName;
+
+    /**
+     * 状态（0 异用 1 正常）
+     */
+    private Integer status;
 }

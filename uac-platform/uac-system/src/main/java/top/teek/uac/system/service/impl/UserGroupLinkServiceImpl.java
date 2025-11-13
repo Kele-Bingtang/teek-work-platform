@@ -82,14 +82,13 @@ public class UserGroupLinkServiceImpl extends ServiceImpl<UserGroupLinkMapper, U
 
     @Override
     public boolean removeUserFromUserGroup(List<Long> ids) {
-        return baseMapper.deleteBatchIds(ids) > 0;
+        return baseMapper.deleteByIds(ids) > 0;
     }
 
     @Override
-    public List<UserGroupLinkVO> listUserGroupByUserId(String appId, String userId) {
+    public List<UserGroupLinkVO> listUserGroupByUserId(String userId) {
         QueryWrapper<SysUserGroup> wrapper = Wrappers.query();
         wrapper.eq("tugl.is_deleted", ColumnConstant.NON_DELETED)
-                .eq("tsug.app_id", appId)
                 .eq("tugl.user_id", userId);
 
         return baseMapper.listUserGroupByUserId(wrapper);

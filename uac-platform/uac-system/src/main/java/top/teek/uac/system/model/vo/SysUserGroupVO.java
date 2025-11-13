@@ -4,6 +4,7 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
 import top.teek.excel.annotation.ExcelDictFormat;
 import top.teek.excel.convert.ExcelDictConvert;
+import top.teek.uac.system.export.NormalStatusHandler;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -61,6 +62,13 @@ public class SysUserGroupVO implements Serializable {
      */
     @ExcelProperty("负责人 username")
     private String ownerName;
+
+    /**
+     * 状态（0 异用 1 正常）
+     */
+    @ExcelProperty(value = "状态", converter = ExcelDictConvert.class)
+    @ExcelDictFormat(handler = NormalStatusHandler.class)
+    private Integer status;
 
     /**
      * 创建时间

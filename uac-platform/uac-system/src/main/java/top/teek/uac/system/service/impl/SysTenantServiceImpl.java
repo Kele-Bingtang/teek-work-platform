@@ -374,7 +374,7 @@ public class SysTenantServiceImpl extends ServiceImpl<SysTenantMapper, SysTenant
     public boolean removeBatch(List<Long> ids) {
         List<SysTenant> sysTenantList = baseMapper.selectBatchIds(ids);
 
-        boolean result = baseMapper.deleteBatchIds(ids) > 0;
+        boolean result = baseMapper.deleteByIds(ids) > 0;
         
         for (SysTenant sysTenant : sysTenantList) {
             CacheHelper.evict(CacheNameConstant.SYS_TENANT, sysTenant.getTenantId());

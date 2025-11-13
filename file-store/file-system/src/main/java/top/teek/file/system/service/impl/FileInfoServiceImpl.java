@@ -94,7 +94,7 @@ public class FileInfoServiceImpl extends ServiceImpl<FileInfoMapper, FileInfo> i
         FileHelper.removeFiles(fileList);
 
         List<Long> idList = fileInfoList.stream().map(FileInfo::getId).toList();
-        return baseMapper.deleteBatchIds(idList) > 0;
+        return baseMapper.deleteByIds(idList) > 0;
     }
 }
 

@@ -78,7 +78,7 @@ public class SysDictTypeServiceImpl extends ServiceImpl<SysDictTypeMapper, SysDi
     public boolean removeBatch(List<Long> ids) {
         List<SysDictType> sysDictTypeList = baseMapper.selectBatchIds(ids);
 
-        boolean result = baseMapper.deleteBatchIds(ids) > 0;
+        boolean result = baseMapper.deleteByIds(ids) > 0;
 
         for (SysDictType sysDictType : sysDictTypeList) {
             // 删除存储的数据

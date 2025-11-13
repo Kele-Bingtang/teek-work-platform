@@ -125,7 +125,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
         userRoleLinkService.remove(Wrappers.<UserRoleLink>lambdaQuery().in(UserRoleLink::getRoleId, roleIds));
         // 删除角色与用户组绑定
         userGroupRoleLinkService.remove(Wrappers.<UserGroupRoleLink>lambdaQuery().in(UserGroupRoleLink::getRoleId, roleIds));
-        return baseMapper.deleteBatchIds(ids) > 0;
+        return baseMapper.deleteByIds(ids) > 0;
     }
 
     @Override

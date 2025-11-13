@@ -77,7 +77,7 @@ public class DictTypeServiceImpl extends ServiceImpl<DictTypeMapper, DictType> i
     public boolean removeBatch(List<Long> ids) {
         List<DictType> dictTypeList = baseMapper.selectBatchIds(ids);
 
-        boolean result = baseMapper.deleteBatchIds(ids) > 0;
+        boolean result = baseMapper.deleteByIds(ids) > 0;
 
         for (DictType DictType : dictTypeList) {
             // 删除存储的数据

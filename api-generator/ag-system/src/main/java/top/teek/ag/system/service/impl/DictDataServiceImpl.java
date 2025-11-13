@@ -97,7 +97,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
     public boolean removeBatch(List<Long> ids) {
         DictData dictData = baseMapper.selectById(ids.get(0));
 
-        boolean result = baseMapper.deleteBatchIds(ids) > 0;
+        boolean result = baseMapper.deleteByIds(ids) > 0;
 
         CacheHelper.evict(CacheNameConstant.SYS_DICT, dictData.getDictCode());
         return result;

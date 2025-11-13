@@ -88,7 +88,7 @@ public class SysOperaLogServiceImpl extends ServiceImpl<SysOperaLogMapper, SysOp
 
     @Override
     public Boolean removeBatch(List<Long> ids) {
-        return baseMapper.deleteBatchIds(ids) > 0;
+        return baseMapper.deleteByIds(ids) > 0;
     }
 
     @Override

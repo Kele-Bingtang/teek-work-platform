@@ -63,11 +63,10 @@ public interface UserGroupLinkService extends IService<UserGroupLink> {
     /**
      * 通过用户 ID 查询用户组列表
      *
-     * @param appId  应用 ID
      * @param userId 用户 ID
      * @return 用户组列表
      */
-    List<UserGroupLinkVO> listUserGroupByUserId(String appId, String userId);
+    List<UserGroupLinkVO> listUserGroupByUserId(String userId);
 
     /**
      * 查询用户组下的用户列表

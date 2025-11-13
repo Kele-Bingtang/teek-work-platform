@@ -96,7 +96,7 @@ public class SysUserGroupServiceImpl extends ServiceImpl<SysUserGroupMapper, Sys
         userGroupLinkService.remove(Wrappers.<UserGroupLink>lambdaQuery().in(UserGroupLink::getUserGroupId, userGroupIds));
         // 删除用户组与角色绑定
         userGroupRoleLinkService.remove(Wrappers.<UserGroupRoleLink>lambdaQuery().in(UserGroupRoleLink::getUserGroupId, userGroupIds));
-        return baseMapper.deleteBatchIds(ids) > 0;
+        return baseMapper.deleteByIds(ids) > 0;
     }
 
 }

@@ -84,7 +84,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                 .like(StringUtil.hasText(sysUserDTO.getPhone()), "su.phone", sysUserDTO.getPhone())
                 .like(StringUtil.hasText(sysUserDTO.getEmail()), "su.email", sysUserDTO.getEmail())
                 .eq(Objects.nonNull(sysUserDTO.getStatus()), "su.status", sysUserDTO.getStatus())
-                .and(StringUtil.hasText(sysUserDTO.getDeptId()), c -> {
+                .and(StringUtil.hasText(sysUserDTO.getDeptId()), qw -> {
                     // 查出 deptId 所对应的部门及其子部门 ID 信息
                     List<SysDept> sysDeptList = sysDeptService.list(Wrappers.<SysDept>lambdaQuery()
                             .select(SysDept::getDeptId)
@@ -93,7 +93,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                     List<String> deptIds = sysDeptList.stream().map(SysDept::getDeptId).filter(Objects::nonNull).collect(Collectors.toList());
                     // 加上当前部门
                     deptIds.add(sysUserDTO.getDeptId());
-                    c.in("su.dept_id", deptIds);
+                    qw.in("su.dept_id", deptIds);
                 })
                 .orderByAsc("su.id");
 
@@ -222,7 +222,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         // 删除用户与用户组表
         userGroupLinkService.remove(Wrappers.<UserGroupLink>lambdaQuery().in(UserGroupLink::getUserId, userIds));
 
-        return baseMapper.deleteBatchIds(ids) > 0;
+        return baseMapper.deleteByIds(ids) > 0;
     }
 
     /**

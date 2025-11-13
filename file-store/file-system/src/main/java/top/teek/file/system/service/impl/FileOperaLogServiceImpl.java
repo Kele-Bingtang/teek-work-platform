@@ -61,7 +61,7 @@ public class FileOperaLogServiceImpl extends ServiceImpl<FileOperaLogMapper, Fil
 
     @Override
     public Boolean removeBatch(List<Long> ids) {
-        return baseMapper.deleteBatchIds(ids) > 0;
+        return baseMapper.deleteByIds(ids) > 0;
     }
 
     @Override

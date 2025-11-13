@@ -77,7 +77,7 @@ public class UserGroupRoleLinkServiceImpl extends ServiceImpl<UserGroupRoleLinkM
 
     @Override
     public boolean removeUserGroupFromRole(List<Long> ids) {
-        return baseMapper.deleteBatchIds(ids) > 0;
+        return baseMapper.deleteByIds(ids) > 0;
     }
 
     @Override

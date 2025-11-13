@@ -4,10 +4,12 @@ import top.teek.mp.base.PageQuery;
 import top.teek.mp.base.TablePage;
 import top.teek.uac.system.mapper.SysPostMapper;
 import top.teek.uac.system.model.dto.SysPostDTO;
+import top.teek.uac.system.model.po.SysDept;
 import top.teek.uac.system.model.po.SysPost;
 import top.teek.uac.system.model.po.UserPostLink;
 import top.teek.uac.system.model.vo.SysPostVO;
 import top.teek.uac.system.model.vo.extra.UserSelectPostVo;
+import top.teek.uac.system.service.SysDeptService;
 import top.teek.uac.system.service.SysPostService;
 import top.teek.uac.system.service.UserPostLinkService;
 import top.teek.utils.MapstructUtil;
@@ -21,6 +23,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * @author Teeker
@@ -32,6 +35,7 @@ import java.util.Objects;
 public class SysPostServiceImpl extends ServiceImpl<SysPostMapper, SysPost> implements SysPostService {
 
     private final UserPostLinkService userPostLinkService;
+    private final SysDeptService sysDeptService;
 
     @Override
     public List<SysPostVO> listAll(SysPostDTO sysPostDTO) {
@@ -45,7 +49,7 @@ public class SysPostServiceImpl extends ServiceImpl<SysPostMapper, SysPost> impl
     public TablePage<SysPostVO> listPage(SysPostDTO sysPostDTO, PageQuery pageQuery) {
         LambdaQueryWrapper<SysPost> wrapper = buildQueryWrapper(sysPostDTO);
         Page<SysPost> sysPostPage = baseMapper.selectPage(pageQuery.buildPage(), wrapper);
-        
+
         return TablePage.build(sysPostPage, SysPostVO.class);
     }
 
@@ -54,6 +58,17 @@ public class SysPostServiceImpl extends ServiceImpl<SysPostMapper, SysPost> impl
                 .eq(StringUtil.hasText(sysPostDTO.getPostCode()), SysPost::getPostCode, sysPostDTO.getPostCode())
                 .eq(StringUtil.hasText(sysPostDTO.getPostName()), SysPost::getPostName, sysPostDTO.getPostName())
                 .eq(Objects.nonNull(sysPostDTO.getStatus()), SysPost::getStatus, sysPostDTO.getStatus())
+                .and(StringUtil.hasText(sysPostDTO.getDeptId()), qw -> {
+                    // 查出 deptId 所对应的部门及其子部门 ID 信息
+                    List<SysDept> sysDeptList = sysDeptService.list(Wrappers.<SysDept>lambdaQuery()
+                            .select(SysDept::getDeptId)
+                            .apply("FIND_IN_SET({0}, ancestors) > 0", sysPostDTO.getDeptId()));
+                    // 获取所有子部门 ID
+                    List<String> deptIds = sysDeptList.stream().map(SysDept::getDeptId).filter(Objects::nonNull).collect(Collectors.toList());
+                    // 加上当前部门
+                    deptIds.add(sysPostDTO.getDeptId());
+                    qw.in(SysPost::getDeptId, deptIds);
+                })
                 .orderByAsc(SysPost::getOrderNum);
     }
 
@@ -91,7 +106,7 @@ public class SysPostServiceImpl extends ServiceImpl<SysPostMapper, SysPost> impl
 
     @Override
     public boolean removeBatch(List<Long> ids) {
-        return baseMapper.deleteBatchIds(ids) > 0;
+        return baseMapper.deleteByIds(ids) > 0;
     }
 
     @Override
